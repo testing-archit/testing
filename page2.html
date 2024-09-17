@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coal Vision</title>
+    <link rel="stylesheet" href="page2.css"> <!-- Link to external CSS file -->
+</head>
+
+<body>
+    <!-- Google Translate Section -->
+    <div id="google_translate_element"></div>
+    <script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,hi',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false // Disable the automatic display of the translation banner
+        }, 'google_translate_element');
+    }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <div class="container">
+        <!-- Sidebar Section -->
+        <div class="sidebar">
+            <img src="new logo.png" alt="Coal India Logo" class="logo">
+            <div class="live-news">
+                <center>
+                <h2>Live Mining News</h2>
+                </center>
+                <div class="news-ticker">
+                    <div class="news-content">
+                        <p>Breaking News: New safety measures implemented at the mining site.</p>
+                        <!-- Additional news items -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content Section -->
+        <div class="content">
+            <!-- Profile Summary Section -->
+            <div class="profile-summary">
+                <h2>Profile Summary</h2>
+            </div>
+            
+            <div class="profile-info">
+                <div class="profile-pic">
+                    <img src="pic.png" alt="Profile Picture"> <!-- Replace with the path to the profile picture -->
+                </div>
+                <div class="details">
+                    <h2 id="profile-name">Name</h2>
+                    <p><strong>Worker Status:</strong> <span id="status" class="active">Active</span></p>
+                    <p><strong>Enroll ID:</strong> <span id="enrollId">Enroll ID</span></p>
+                    <p><strong>Department:</strong> <span id="position">Position</span></p>
+                    <p><strong>Site of Work:</strong> <span id="site">Site</span></p>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons Section -->
+            <div class="buttons">
+                <a href="newlay.html" class="shift-handover">Shift Handover</a>
+                <a href="new.html" class="safety-management">Safety Management</a>
+                <a href="updates.html" class="updates">Updates</a>
+                <a href="holiday.html" class="holidays">Holidays</a>
+            </div>
+
+            <!-- Task Section -->
+            <div class="task-section">
+                <h3>Tasks</h3>
+                <div class="task-container">
+                    <div class="task-column urgent">
+                        <h4>Urgent</h4>
+                        <ul>
+                            <li>Inspect equipment in section A</li>
+                        </ul>
+                    </div>
+                    <div class="task-column delegate">
+                        <h4>Delegate</h4>
+                        <ul>
+                            <li>Assign team to clean area B</li>
+                        </ul>
+                    </div>
+                    <div class="task-column common">
+                        <h4>Common</h4>
+                        <ul>
+                            <li>Complete daily safety report</li>
+                            <li>Review shift handover notes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alert Section -->
+            <div class="alert-section">
+                <h3>Alerts</h3>
+                <ul id="alert-list">
+                    <!-- Alerts will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full-Screen Alert Modal -->
+    <div id="alertModal" class="alert-modal">
+        <div class="alert-content">
+            <span class="close-btn" onclick="closeAlert()">&times;</span>
+            <p id="alertMessage">Emergency Alert: Something went wrong in the mine!</p>
+        </div>
+    </div>
+
+    <!-- Firebase Integration -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script>
+        // Firebase configuration and initialization
+        const firebaseConfig = {
+          apiKey: "AIzaSyBZbkbWTlYtScXenDL9n-CgYSNluFtRf9E",
+          authDomain: "dataadd-8cf4f.firebaseapp.com",
+          databaseURL: "https://dataadd-8cf4f-default-rtdb.firebaseio.com",
+          projectId: "dataadd-8cf4f",
+          storageBucket: "dataadd-8cf4f.appspot.com",
+          messagingSenderId: "163416489588",
+          appId: "1:163416489588:web:d786217186f5e6ebe01b21",
+          measurementId: "G-W8YZ1PKF5X"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Function to fetch profile data from Firebase
+        const name = getParameterByName('name');
+        if (name) {
+            database.ref("dataform").orderByChild("name").equalTo(name).once("value", snapshot => {
+                if (snapshot.exists()) {
+                    snapshot.forEach(childSnapshot => {
+                        const data = childSnapshot.val();
+                        document.getElementById('profile-name').innerText = data.name;
+                        document.getElementById('enrollId').innerText = data.enrollId;
+                        document.getElementById('position').innerText = data.position;
+                        document.getElementById('site').innerText = data.site;
+                        document.getElementById('status').innerText = data.status;
+                    });
+                } else {
+                    alert('No records found.');
+                }
+            }).catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        } else {
+            alert('No identifier provided.');
+        }
+
+        // Function to get URL parameters
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                  results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Full-Screen Alert Modal Logic
+        function triggerAlert(message) {
+            document.getElementById('alertMessage').innerText = message; // Set the alert message
+            document.getElementById('alertModal').style.display = 'block'; // Show the modal
+        }
+
+        function closeAlert() {
+            const alertMessage = document.getElementById('alertMessage').innerText; // Get the current alert message
+            document.getElementById('alertModal').style.display = 'none'; // Hide the modal
+
+            // Add the closed alert to the alert list at the bottom
+            addAlertToList(alertMessage);
+        }
+
+        function addAlertToList(message) {
+            const alertList = document.getElementById('alert-list');
+            const newAlert = document.createElement('li');
+            const timestamp = new Date().toLocaleString(); // Get current date and time
+            newAlert.innerText = `${message} - [Closed at: ${timestamp}]`;
+            alertList.appendChild(newAlert);
+        }
+
+        // Example alert (this can be replaced with real-time data from Firebase)
+        setTimeout(function() {
+            triggerAlert('High gas levels detected in Section B!'); // Example alert message
+        }, 5000); // Trigger alert after 5 seconds
+    </script>
+</body>
+</html>

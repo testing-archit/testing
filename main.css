@@ -1,0 +1,301 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(8px); /* Apply blur to the background image */
+    z-index: -1; /* Place behind the content */
+}
+.top-bar {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.language-options {
+    float: right;
+    margin-right: 20px;
+}
+
+.language-options select, .language-options a {
+    color: white;
+    background-color: #868181;
+    border: none;
+}
+
+.header-content {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #8d8d8daf;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+.gov-logo {
+    width: 60px;
+    height: auto;
+}
+
+.header-title h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.header-title h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+nav ul {
+    background-color: #333;
+    list-style: none;
+    padding: 11px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+    position: relative;
+}
+
+.nav-item {
+    display: inline-block;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.nav-item a {
+    color: #000;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 18px;
+    display: block;
+    background-color: #a1eadf;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item a:hover {
+    background-color: hsl(2, 67%, 68%);
+    transform: scale(1.05);
+}
+
+/* Slider container */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 400px;
+    overflow: hidden;
+    margin: auto;
+    background-color: #ddd;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.slider-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #ccc;
+}
+
+/* Slider holding all slides */
+.slider {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    width: 100%;
+}
+
+/* Individual slide */
+.slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+/* Image within each slide */
+.slider-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.intro {
+    background-color: #d2ebeecd; /* Soft background color for a professional look */
+    padding: 40px; /* Increased padding for more space */
+    text-align: center; /* Center-align text */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 30px auto; /* Center align the section with margin */
+    max-width: 1200px; /* Limit the maximum width for better readability */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.intro:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.intro h3 {
+    font-size: 2.5em; /* Larger heading text */
+    color: #333; /* Darker text color for better readability */
+    margin-bottom: 20px; /* Spacing below the heading */
+}
+
+.intro p {
+    font-size: 1.2em; /* Larger paragraph text */
+    line-height: 1.6; /* Increased line height for better readability */
+    color: #555; /* Slightly lighter text color */
+    margin: 0; /* Remove default margin */
+}
+
+
+.ministers {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f8f8f8;
+    padding: 20px;
+    flex-wrap: wrap; /* Ensure items wrap on smaller screens */
+}
+
+.minister {
+    text-align: center;
+    flex: 1;
+    min-width: 200px; /* Adjust width for better responsiveness */
+    margin: 10px; /* Add margin for spacing */
+}
+
+.minister img {
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.news {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; /* Adds space between the news items */
+}
+
+.news-item {
+    flex: 1;
+    min-width: 280px;
+    padding: 15px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.news-item:hover {
+    background-color: #d4d4d4; /* Lighter background on hover */
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.news-item h4 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #0056b3;
+}
+
+.news-item p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+
+.photo-gallery {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.photo-gallery h4 {
+    font-size: 2em;
+    color: #0d5604;
+    margin-bottom: 20px;
+}
+
+.photo-gallery img {
+    width: 50%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #333;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+footer p {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    background-color: #222;
+    margin: 0;
+}
+h3 {
+    position: relative;
+    display: inline-block;
+    font-size: 2em;
+    color: #333; /* Text color */
+    margin: 0;
+}
+
+h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Position of the underline */
+    width: 100%;
+    height: 4px; /* Thickness of the underline */
+    background: linear-gradient(90deg, #ff6f61, #d45d79, #b798e6, #7f8c8d); /* Custom gradient colors */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+h3:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+

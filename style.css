@@ -1,0 +1,143 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: url('new\ bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#google_translate_element {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align to top */
+    height: 100vh;
+    color: white;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 48px;
+    color: black; /* Text color */
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white background */
+    padding: 20px 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Blur effect for background */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Drop shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for the main heading */
+header h1:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+    background-color: rgba(255, 255, 255, 0.5); /* Lighter background on hover */
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Move to left */
+    position: relative;
+    width: 100%;
+}
+
+.logo-container {
+    position: fixed; /* Fix the logo relative to the viewport */
+    top: 0; /* Align it to the top */
+    left: -80px;
+    padding: -15px; /* Add some padding for spacing */
+    z-index: 1000; /* Keep it on top of other elements */
+    transform: translateX(-10px); /* Further shift it leftward */
+}
+
+
+.logo {
+    width: 400px; /* Adjust size if needed */
+}
+
+.login-form {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    margin-left: 300px; /* Move form to the right */
+    margin-top: 80px; /* Move form downwards */
+}
+
+.login-form h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.remember-forgot {
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #fbbf24;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.help-link {
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #fbbf24;
+    text-decoration: none;
+}
+
+.help-link:hover {
+    text-decoration: underline;
+}
+
+.app-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.app-links a {
+    margin: 0 10px;
+}
+
+.app-links img {
+    width: 120px;
+}
+.login-form a {
+    color: white; /* Set the link color to white */
+    text-decoration: none; /* Remove the underline if needed */
+}
+
+.login-form a:hover {
+    text-decoration: underline; /* Add underline on hover if desired */
+}
+

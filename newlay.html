@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shift Handover Log System</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('background-page1.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #333333, #555555);
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        header .menu-btn, header .back-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #fff;
+            color: #333;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header .menu-btn {
+            right: 20px;
+        }
+
+        header .back-btn {
+            left: 20px;
+        }
+
+        header h1 {
+            font-size: 1.7rem;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: #ffffffdd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #handover-entry {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8)), url('form-background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #080101;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="datetime-local"], select, textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background: linear-gradient(to right, #28a745, #218838);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #218838, #1c7430);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333333;
+            color: white;
+        }
+
+        .handover-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-btn">Back</button>
+        <h1>Shift Handover Log System</h1>
+        <button class="menu-btn">Menu</button>
+    </header>
+
+    <main>
+        <section id="handover-entry">
+            <h2>Create a New Handover</h2>
+            <form id="handover-form">
+                <label for="personName">Person Name:</label>
+                <select id="personName" name="personName" required>
+                    <option value="">--Select Person--</option>
+                    <option value="John Doe">John Doe</option>
+                    <option value="Jane Doe">Jane Doe</option>
+                    <option value="Michael Scott">Michael Scott</option>
+                    <option value="Pam Beesly">Pam Beesly</option>
+                    <option value="Dwight Schrute">Dwight Schrute</option>
+                    <!-- Add more names as needed -->
+                </select>
+
+                <label for="supervisor">Site Supervisor:</label>
+                <select id="supervisor" name="supervisor" required>
+                    <option value="">--Select Supervisor--</option>
+                    <option value="Jane Smith">Jane Smith</option>
+                    <option value="Jim Halpert">Jim Halpert</option>
+                    <option value="Stanley Hudson">Stanley Hudson</option>
+                    <option value="Kelly Kapoor">Kelly Kapoor</option>
+                    <!-- Add more supervisors as needed -->
+                </select>
+
+                <label for="shiftDate">Shift Date/Time:</label>
+                <input type="datetime-local" id="shiftDate" name="shiftDate" required>
+
+                <label for="tasks">Select Task:</label>
+                <select id="tasks" name="tasks" required>
+                    <option value="">--Select a Task--</option>
+                    <option value="Task 1">Task 1: Equipment Check</option>
+                    <option value="Task 2">Task 2: Ventilation Check</option>
+                    <option value="Task 3">Task 3: Power Systems Monitoring</option>
+                    <!-- Add more tasks as required -->
+                </select>
+
+                <label for="safetyConcerns">Safety Concerns:</label>
+                <div id="safetyConcerns" name="safetyConcerns">
+                    <input type="checkbox" id="concern1" name="concern1" value="Ventilation OK">
+                    <label for="concern1">Ventilation OK</label><br>
+
+                    <input type="checkbox" id="concern2" name="concern2" value="Safety Gear Worn">
+                    <label for="concern2">Safety Gear Worn</label><br>
+
+                    <input type="checkbox" id="concern3" name="concern3" value="Fire Extinguishers Checked">
+                    <label for="concern3">Fire Extinguishers Checked</label><br>
+
+                    <input type="checkbox" id="concern4" name="concern4" value="First Aid Kit Available">
+                    <label for="concern4">First Aid Kit Available</label><br>
+                </div>
+
+                <label for="attachments">Attachments:</label>
+                <input type="file" id="attachments" name="attachments" multiple>
+
+                <button type="submit">Submit Handover</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Shift Handover Log System</p>
+    </footer>
+
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+        document.getElementById('handover-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const shiftDate = document.getElementById('shiftDate').value;
+            const personName = document.getElementById('personName').value;
+            const supervisor = document.getElementById('supervisor').value;
+            const tasks = document.getElementById('tasks').value;
+
+            const safetyChecks = [];
+            const safetyInputs = document.querySelectorAll('#safetyConcerns input[type="checkbox"]');
+            safetyInputs.forEach(input => {
+                if (input.checked) {
+                    safetyChecks.push(input.value);
+                }
+            });
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(14);
+            doc.text("Shift Handover Log", 10, 10);
+            doc.text(`Date/Time: ${shiftDate}`, 10, 20);
+            doc.text(`Person Name: ${personName}`, 10, 30);
+            doc.text(`Site Supervisor: ${supervisor}`, 10, 40);
+            doc.text(`Task: ${tasks}`, 10, 50);
+            doc.text(`Safety Concerns:`, 10, 60);
+            doc.text(safetyChecks.join(', '), 10, 70);
+
+            doc.save(`Handover_${shiftDate}.pdf`);
+
+            document.getElementById('handover-form').reset();
+        });
+    </script>
+</body>
+</html>
